@@ -1,0 +1,44 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+<div class="form-container">
+    <div class="card">
+        <div class="card-header">
+          Task id : <%=task._id%>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+              <u>Title</u> : <%=task.name%>
+            </h4>
+            <h4 class="card-title">
+                <u>Status</u> : <%=task.status%>
+              </h4>
+              <h5 class="card-title">
+                <u>Created At</u> : <%=task.createdAt%>
+              </h5>
+              <h5 class="card-title">
+                <u>Updated At</u> : <%=task.updatedAt%>
+              </h5>
+          
+          
+          
+        </div>
+        <div class="card-footer text-muted">
+            <p class="card-text">Selecting delete button will permanently delete this task !</p>
+            <a href="/" class="btn btn-primary">Go Back</a>
+          <button data-id="<%=task._id%>" id="deletebtn" class="btn btn-danger">Delete</button>
+          </div>
+    </div>
+</div>
+
+<script>
+    deletebtn.onclick = function (e){
+        document.location.href="/";
+        e.preventDefault();
+        const id = e.target.getAttribute("data-id")
+        const endpoint = '/tasks/'+id;
+        fetch(endpoint, {method: 'DELETE'}).then().catch(err)
+    }
+</script>
+
+<%- include('./partials/footer.ejs') %>

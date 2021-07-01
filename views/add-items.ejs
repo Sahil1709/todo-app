@@ -1,0 +1,21 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+<div class="form-container">
+  <form action="tasks" method="POST">
+    <div class="form-group">
+      <label for="task">Task</label><br>
+      <input type="name" name="name" class="form-control-lg" id="task" placeholder="Description of your task">
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label><br>
+      <select name="status" class="form-control-lg" id="status">
+        <option>Pending</option>
+        <option>Done</option>
+      </select>
+    </div><br>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+
+<%- include('./partials/footer.ejs') %>

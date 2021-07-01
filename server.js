@@ -1,9 +1,10 @@
 const path = require('path');
+require('dotenv').config()
 const express = require('express')
 const moment = require('moment')
 const app = express()
 app.set('view engine','ejs')
-const port = 3000
+const port = process.env.PORT || 3000
 const Task = require('./models/tasks')
 app.use(express.static(__dirname + '/views/'));
 app.use(express.urlencoded({ extended:true }));
@@ -11,10 +12,10 @@ app.use(express.urlencoded({ extended:true }));
 
 const mongoose = require('mongoose');
 const task = require('./models/tasks');
-const mongoDB = "mongodb+srv://sahil:sahil1234567890@cluster0.rhpkj.mongodb.net/todo-database?retryWrites=true&w=majority";
+const mongoDB = process.env.DB_CONNECT;
 
 mongoose.connect(mongoDB,{useNewUrlParser:true , useUnifiedTopology:true }).then(()=>{
-  console.log('Connected using udemy way');
+  console.log('Connected using old way');
   app.listen(port, () => {
     console.log(`Todo app listening at http://localhost:${port}`)
   });

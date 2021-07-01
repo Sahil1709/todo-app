@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended:true }));
 
 const mongoose = require('mongoose');
 const task = require('./models/tasks');
-const mongoDB = process.env.DB_CONNECT;
 
-mongoose.connect(mongoDB,{useNewUrlParser:true , useUnifiedTopology:true }).then(()=>{
+mongoose.connect(process.env.MONGODB,{useNewUrlParser:true , useUnifiedTopology:true }).then(()=>{
   console.log('Connected using old way');
   app.listen(port, () => {
     console.log(`Todo app listening at http://localhost:${port}`)
